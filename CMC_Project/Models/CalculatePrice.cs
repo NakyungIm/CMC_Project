@@ -78,7 +78,9 @@ namespace SetUnitPriceByExcel
         {
             //고정금액 비율 계산
             var directConstPrice = Data.Investigation["직공비"];
-            var fixCostSum = Data.InvestigateFixedPriceDirectMaterial + Data.InvestigateFixedPriceDirectLabor + Data.InvestigateFixedPriceOutputExpense;
+            var fixCostSum = Data.FixedPriceDirectMaterial + Data.FixedPriceDirectLabor + Data.FixedPriceOutputExpense;
+            //var fixCostSum = Data.InvestigateFixedPriceDirectMaterial + Data.InvestigateFixedPriceDirectLabor + Data.InvestigateFixedPriceOutputExpense;
+
             Data.FixedPricePercent = (fixCostSum / directConstPrice) * 100; // 고정금액 비중 계산
         }
 
@@ -507,7 +509,7 @@ namespace SetUnitPriceByExcel
         }
         public static void Calculation()
         {
-            docBID = XDocument.Load(Path.Combine(Data.work_path, "Setting_Xml.xml"));
+            docBID = XDocument.Load(Path.Combine(Data.desktop_path, "Setting_Xml.xml"));
             eleBID = docBID.Root.Elements();
             //가격 재세팅 후 리셋 함수 실행 횟수 증가
             Reset();

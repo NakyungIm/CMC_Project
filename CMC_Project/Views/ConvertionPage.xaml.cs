@@ -59,6 +59,8 @@ namespace CMC_Project.Views
             {
                 // 복사 파일 저장 폴더 생성
                 String copiedFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\EmptyBid";
+                String copiedFolder2 = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\WORK DIRECTORY";
+
                 if (!Directory.Exists(copiedFolder)) // 이미 폴더가 있지 않은 경우
                 {
                     // directory permission
@@ -69,6 +71,15 @@ namespace CMC_Project.Views
                     DirectorySecurity security = info.GetAccessControl();
                     security.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
                     info.SetAccessControl(security);
+
+                    // directory permission
+                    Directory.CreateDirectory(copiedFolder2);
+                    DirectoryInfo info2 = new DirectoryInfo(copiedFolder2);
+                    info2.Attributes &= ~FileAttributes.ReadOnly; // not read only 
+                    // access control
+                    DirectorySecurity security2 = info.GetAccessControl();
+                    security2.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
+                    info2.SetAccessControl(security2);
 
                     FileStream file;
 
@@ -230,6 +241,7 @@ namespace CMC_Project.Views
 
                     Data.CanCovertFile = false;
                     Data.IsConvert = true;
+                    AdjustmentPage.isConfirm = true;
                     DisplayDialog("단가 세팅 완료", "Complete");
                     //isConfirm = true;
 

@@ -43,24 +43,16 @@ namespace SetUnitPriceByExcel
 
         public static async void XmlToBid()
         {
-            //StorageFolder copiedFolder = await Data.folder.CreateFolderAsync("Result Bid", CreationCollisionOption.ReplaceExisting); // Result Bid 폴더 생성
-            string path = Data.folder + "\\Result Bid"; //Result Bid 경로
-
-            if (Directory.Exists(path))
-                Directory.Delete(path);
-            Directory.CreateDirectory(path); // Result Bid 폴더 생성
-
-
-            string myfile = Path.Combine(Data.folder, "Result_Xml.xml");
+            string myfile = Path.Combine(Data.work_path, "Result_Xml.xml");
             byte[] bytes = File.ReadAllBytes(myfile);
             string encodeValue = Convert.ToBase64String(bytes);
-            File.WriteAllText(Path.Combine(Data.folder, "XmlToBID.BID"), encodeValue);
+            File.WriteAllText(Path.Combine(Data.work_path, "XmlToBID.BID"), encodeValue);
             string resultFileName = filename.Substring(0, 16) + ".zip";
-            using (ZipArchive zip = ZipFile.Open(Path.Combine(Data.folder, resultFileName), ZipArchiveMode.Create))
+            using (ZipArchive zip = ZipFile.Open(Path.Combine(Data.work_path, resultFileName), ZipArchiveMode.Create))
             {
-                zip.CreateEntryFromFile(Path.Combine(Data.folder, "XmlToBID.BID"), "XmlToBid.BID");
+                zip.CreateEntryFromFile(Path.Combine(Data.work_path, "XmlToBID.BID"), "XmlToBid.BID");
             }
-            File.Move(Path.Combine(Data.folder, resultFileName), Path.ChangeExtension(Path.Combine(path, resultFileName), ".BID"));
+            File.Move(Path.Combine(Data.work_path, resultFileName), Path.ChangeExtension(Path.Combine(Data.work_path, resultFileName), ".BID"));
         }
     }
 }

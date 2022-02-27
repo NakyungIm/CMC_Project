@@ -13,6 +13,9 @@
     <Compile Update="Views\ConvertionPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ResultPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ConvertionPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ResultPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

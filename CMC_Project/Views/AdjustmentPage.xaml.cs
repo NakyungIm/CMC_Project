@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using SetUnitPriceByExcel;
+using System.Diagnostics;
 
 namespace CMC_Project.Views
 {
@@ -30,6 +20,37 @@ namespace CMC_Project.Views
             InitializeComponent();
             this.averageRating.TextChanged += AverageChangedHandler;
             this.estimateRating.TextChanged += EstimateChangedHandler;
+
+            // 사정율 초기화
+            if (Data.BalanceRateNum != null && Data.PersonalRateNum != null)
+            {
+                averageRating.Text = ((double)Data.BalanceRateNum).ToString();
+                estimateRating.Text = ((double)Data.PersonalRateNum).ToString();
+            }
+            // 라디오 버튼 초기화
+            Data.UnitPriceTrimming = "1";
+            // 표준시장 단가 체크
+            if (Data.StandardMarketDeduction == "1")
+                CheckStandardPrice.IsChecked = true;
+            else
+                CheckStandardPrice.IsChecked = false;
+            // 공종 가중치 체크
+            if (Data.ZeroWeightDeduction == "1")
+                CheckWeightValue.IsChecked = true;
+            else
+                CheckWeightValue.IsChecked = false;
+            // 법정 요율 체크
+            if (Data.CostAccountDeduction == "1")
+                CheckCAD.IsChecked = true;
+            else
+                CheckCAD.IsChecked = false;
+            // 원단위 체크
+            if (Data.BidPriceRaise == "1")
+                CheckCeiling.IsChecked = true;
+            else
+                CheckCeiling.IsChecked = false;
+
+
         }
 
         //sender: 이벤트 발생자, args: 이벤트 인자
@@ -39,6 +60,7 @@ namespace CMC_Project.Views
             int selectionStart = averageRating.SelectionStart;
             string result = string.Empty;
             int count = 0;
+            Data.BalanceRateNum = (Double.Parse(averageRating.GetLineText(0)));
 
             foreach (char character in averageRating.Text.ToCharArray())
             {
@@ -63,6 +85,8 @@ namespace CMC_Project.Views
             int selectionStart = estimateRating.SelectionStart;
             string result = string.Empty;
             int count = 0;
+            Data.PersonalRateNum = (Double.Parse(estimateRating.GetLineText(0)));
+
 
             foreach (char character in estimateRating.Text.ToCharArray())
             {
@@ -84,18 +108,153 @@ namespace CMC_Project.Views
             MessageBox.Show("Clicked");
         }
 
-        private void CalBtnClick(object sender, RoutedEventArgs e)
-        {
-            if (averageRating.Text != string.Empty && estimateRating.Text != string.Empty)
-            {
-                MessageBox.Show("사정율 적용을 완료하였습니다.");
 
+        // ------------------------- 옵션 입력 버튼 ------------------------------------------------------------------------------------------------------------------------------------------- //
+        //소수 1자리 체크
+        private void RadioDecimal_Checked(object sender, RoutedEventArgs e)
+        {
+            Data.UnitPriceTrimming = "1";
+        }
+        // 정수 체크
+        private void RadioInteger_Checked(object sender, RoutedEventArgs e)
+        {
+            Data.UnitPriceTrimming = "2";
+        }
+
+        // 표준시장 단가 체크
+        private void CheckStandardPrice_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)CheckStandardPrice.IsChecked)
+            {
+                Data.StandardMarketDeduction = "1";
             }
             else
             {
-                MessageBox.Show("사정율을 입력해주세요.");
+                Data.StandardMarketDeduction = "2";
             }
         }
+
+        // 공종 가중치 체크
+        private void CheckWeightValue_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)CheckWeightValue.IsChecked)
+            {
+                Data.ZeroWeightDeduction = "1";
+            }
+            else
+            {
+                Data.ZeroWeightDeduction = "2";
+            }
+        }
+
+        // 법정요율 체크
+        private void CheckCAD_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)CheckCAD.IsChecked)
+            {
+                Data.CostAccountDeduction = "1";
+            }
+            else
+            {
+                Data.CostAccountDeduction = "2";
+            }
+        }
+
+        // 원단위 체크
+        private void CheckCeiling_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)CheckCeiling.IsChecked)
+            {
+                Data.BidPriceRaise = "1";
+            }
+            else
+            {
+                Data.BidPriceRaise = "2";
+            }
+        }
+
+        //노무비 하한율 체크
+        private void CheckLaborCost_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)CheckCeiling.IsChecked)
+            {
+                Data.LaborCostLowBound = "1";
+            }
+            else
+            {
+                Data.LaborCostLowBound = "2";
+            }
+        }
+
+
+
+
+
+        private void CalBtnClick(object sender, RoutedEventArgs e)
+        {
+            if (averageRating.Text == string.Empty || estimateRating.Text == string.Empty)
+            {
+                MessageBox.Show("사정율을 입력해주세요.");
+            }
+
+
+            // 단가를 불러온 경우
+            if (isConfirm)
+            {
+                //입찰금액 심사 점수 계산 및 단가 조정
+                CalculatePrice.Calculation();
+
+                /*
+                 *             //고정금액 비율 계산
+            var directConstPrice = Data.Investigation["직공비"]; 8355359914
+            var fixCostSum = Data.InvestigateFixedPriceDirectMaterial + Data.InvestigateFixedPriceDirectLabor + Data.InvestigateFixedPriceOutputExpense;  0 + 0 + 0
+            Data.FixedPricePercent = (fixCostSum / directConstPrice) * 100; // 고정금액 비중 계산
+
+                                        //직공비, 고정금액, 표준시장단가 금액 재계산
+                        Data.RealDirectMaterial -= Convert.ToDecimal(string.Concat(bid.Element("C19").Value));
+                        Data.RealDirectLabor -= Convert.ToDecimal(string.Concat(bid.Element("C20").Value));
+                        Data.RealOutputExpense -= Convert.ToDecimal(string.Concat(bid.Element("C21").Value));
+                        Data.FixedPriceDirectMaterial -= Convert.ToDecimal(string.Concat(bid.Element("C19").Value));
+                        Data.FixedPriceDirectLabor -= Convert.ToDecimal(string.Concat(bid.Element("C20").Value));
+                        Data.FixedPriceOutputExpense -= Convert.ToDecimal(string.Concat(bid.Element("C21").Value));
+
+
+                 */
+
+                FixedPercentPrice.Text = Data.FixedPricePercent + " %";
+                MyPercent.Text = "(+/-) " + CalculatePrice.myPercent * 100.0m + " %";
+                TargetRate.Text = Data.Bidding["도급비계"] + " 원 " + "(" + FillCostAccount.GetRate("도급비계") + " %)"; // 도급비계
+                isCalculate = true;
+
+                //OutputTextBlock.Text = "사정율 적용 완료!";
+                DisplayDialog("사정율 적용을 완료하였습니다", Data.FixedPriceDirectMaterial.ToString());
+            }
+
+            // 단가를 불러오지 않은 경우
+            else
+            {
+                DisplayDialog("단가를 먼저 세팅해주세요.", "Error");
+            }
+        }
+
+
+        // ------------------------- 세부 결과 확인 버튼 ------------------------------------------------------------------------------------------------------------------------------------------------- //
+        private void ShowResult_Click(object sender, RoutedEventArgs e)
+        {
+            if (isCalculate)
+            {
+                CMC_Project.Views.ResultPage rw = new CMC_Project.Views.ResultPage();
+
+                rw.Show();
+            }
+            else
+            {
+                DisplayDialog("계산 후 확인해주세요", "Fail");
+            }
+        }
+
+
+
 
         // 메세지 창
         static public void DisplayDialog(String dialog, String title)
@@ -105,35 +264,29 @@ namespace CMC_Project.Views
 
 
         // ------------------------- BID파일 저장 버튼 ---------------------------------------------------------------------------------------------------------------------------------------- //
-        private async void SaveBidBtnClick(object sender, System.EventArgs e)
+        private void SaveBidBtnClick(object sender, System.EventArgs e)
         {
             // TargetRate가 계산 되어 있을 경우
-            if (isConfirm)
+            if (isCalculate)
             {
                 //단가 세팅 완료한 xml 파일을 다시 BID 파일로 변환
-                //BidHandling.XmlToBid();
+                BidHandling.XmlToBid();
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                //saveFileDialog.Filter = "BID Files (*.BID)|*.BID|All files (*.*)|*.*";
-                saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
+                saveFileDialog.Filter = "BID Files (*.BID)|*.BID|All files (*.*)|*.*";
                 saveFileDialog.RestoreDirectory = true;
-                //saveFileDialog.Title = "Save a BID File";
-                //saveFileDialog.FileName = BidHandling.filename.Substring(0, 16);
+                saveFileDialog.FileName = BidHandling.filename.Substring(0, 16);
+                saveFileDialog.OverwritePrompt = true;
 
 
                 if (saveFileDialog.ShowDialog() == true)
                 {
-                    //string file = await saveFileDialog.PickSaveFileAsync();
-                    //string bidFolder = await Data.folder.GetFolderAsync("Result Bid");
-                    //string bidFolder = Data.folder + "\\Result Bid"; //Result Bid 경로
-                    //string finalBidFile = bidFolder.GetFiles(BidHandling.filename.Substring(0, 16) + ".BID");
+                    string file = saveFileDialog.FileName.ToString(); //경로와 파일명 저장
+                    string bidFolder = Data.work_path; //Result Bid 경로
+                    string finalBidFile = Path.Combine(bidFolder, BidHandling.filename.Substring(0, 16) + ".BID");
 
-
-                    saveFileDialog.OverwritePrompt = true;
-                    string text = saveFileDialog.FileName;
-                    File.WriteAllText(saveFileDialog.FileName, text);
-
+                    File.Move(finalBidFile, file);
                     DisplayDialog("저장되었습니다.", "Save");
                 }
                 else
@@ -149,5 +302,84 @@ namespace CMC_Project.Views
             }
         }
 
+
+        // ------------------------- 원가계산서 저장 버튼 ------------------------------------------------------------------------------------------------------------------------------------- //
+        private void SaveCostBtnClick(object sender, System.EventArgs e)
+        {
+            // TargetRate가 계산 되어 있을 경우
+            if (isCalculate)
+            {
+                //가격 조정 후 원가계산서 엑셀파일 생성
+                FillCostAccount.FillBiddingCosts();
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                saveFileDialog.Filter = "Microsoft Excel (*.xlsx)|*.xlsx";
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.FileName = "원가계산서_세부결과";
+                saveFileDialog.OverwritePrompt = true;
+
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    string file = saveFileDialog.FileName.ToString(); //경로와 파일명 저장
+                    string xlsxFolder = Data.work_path;
+                    string costFile = Path.Combine(xlsxFolder, "원가계산서_세부결과.xlsx");
+
+                    File.Move(costFile, file);
+                    DisplayDialog("저장되었습니다.", "Save");
+                }
+                else
+                {
+                    DisplayDialog("취소되었습니다.", "Error");
+                }
+            }
+
+            // 계산 안되어 있을 경우
+            else
+            {
+                DisplayDialog("계산을 먼저 실행해주세요.", "Error");
+            }
+        }
+
+
+        // ------------------------- 입찰 내역 저장 버튼 -------------------------------------------------------------------------------------------------------------------------------------- //
+        private void SaveBiddingZipBtnClick(object sender, System.EventArgs e)
+        {
+            // TargetRate가 계산 되어 있을 경우
+            if (isCalculate)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                saveFileDialog.Filter = "Zip 압축 파일 (*.zip)|*.zip";
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.FileName = "입찰내역";
+                saveFileDialog.OverwritePrompt = true;
+
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    string file = saveFileDialog.FileName.ToString(); //경로와 파일명 저장
+                    string biddingFolder = Data.work_path; //입찰 내역 경로
+                    string biddingZipFile = Path.Combine(biddingFolder, "입찰내역.zip");
+
+                    Directory.Move(biddingZipFile, file);
+                    DisplayDialog("저장되었습니다.", "Save");
+                }
+                else
+                {
+                    DisplayDialog("취소되었습니다.", "Error");
+                }
+
+
+            }
+
+            // 계산 안되어 있을 경우
+            else
+            {
+                DisplayDialog("계산을 먼저 실행해주세요.", "Error");
+            }
+
+        }
     }
 }

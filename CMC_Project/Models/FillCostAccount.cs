@@ -108,7 +108,9 @@ namespace SetUnitPriceByExcel
             //조사금액을 채운 원가계산서_세부결과.xlsx의 경로
             string costStatementPath = Path.Combine(Data.work_path, "원가계산서.xlsx");
             //원가계산서_세부결과 파일 불러오기
-            var workbook = ExcelHandling.GetWorkbook(costStatementPath, ".xlsx");
+            //var workbook = ExcelHandling.GetWorkbook(costStatementPath, ".xlsx");
+            var workbook = ExcelHandling.GetWorkbook("원가계산서.xlsx", ".xlsx");
+
             var sheet = workbook.GetSheetAt(0);
 
             //적용비율 1, 2 적용금액 원가계산서 반영
@@ -442,7 +444,7 @@ namespace SetUnitPriceByExcel
         }
 
         //입찰 금액의 조사금액 대 비율 저장
-        static decimal GetRate(string item)
+        public static decimal GetRate(string item)
         {
             if(Data.Fixed.ContainsKey(item))
                 return 100m;

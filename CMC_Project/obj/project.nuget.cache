@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ml4zisqwhhXoheA+Wx+a0D3xmLNueHU5zIrqjqFaBZMCut0ZeziA/HDsD16Izb95bqJL+5TQEG2By7KLOvLe/A==",
+  "dgSpecHash": "fhzyfhvm/FPHWiHStgtK8JWd69z9Hyg1kdY8KWN7HALsqTk3bPHCzWCGlWLY18fj3rUScy0RCGHuDVh7Z63BaA==",
   "success": true,
-  "projectFilePath": "D:\\work\\CMC_Project\\CMC_Project\\CMC_Project.csproj",
+  "projectFilePath": "D:\\work\\CMC_Project2\\CMC_Project-master\\CMC_Project\\CMC_Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nakyu\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\nakyu\\.nuget\\packages\\microsoft.win32.systemevents\\4.5.0\\microsoft.win32.systemevents.4.5.0.nupkg.sha512",

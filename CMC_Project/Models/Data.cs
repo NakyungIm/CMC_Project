@@ -149,10 +149,10 @@ namespace SetUnitPriceByExcel
         //사용자의 옵션 및 사정률 데이터
         public static string UnitPriceTrimming { get; set; } = "1";         //단가 소수 처리 (defalut = "1")
         public static string StandardMarketDeduction { get; set; } = "2";   //표준시장단가 99.7% 적용
-        public static string ZeroWeightDeduction { get; set; }      //가중치 0% 공종 50% 적용
-        public static string CostAccountDeduction { get; set; }     //원가계산 제경비 99.7% 적용
-        public static string BidPriceRaise { get; set; }            //투찰금액 천원 절상
-        public static string LaborCostLowBound { get; set; }        //노무비 하한 80%
+        public static string ZeroWeightDeduction { get; set; } = "2";     //가중치 0% 공종 50% 적용
+        public static string CostAccountDeduction { get; set; } = "2";     //원가계산 제경비 99.7% 적용
+        public static string BidPriceRaise { get; set; } = "2";           //투찰금액 천원 절상
+        public static string LaborCostLowBound { get; set; } = "2";        //노무비 하한 80%
         public static decimal BalancedRate { get; set; }    //업체 평균 예측율
         public static decimal PersonalRate { get; set; }    //내 예가 사정률
         public static string ExecuteReset { get; set; } = "0";   //Reset 함수 사용시 단가 소수처리 옵션과 별개로 소수 첫째자리 아래로 절사
