@@ -78,8 +78,8 @@ namespace SetUnitPriceByExcel
         {
             //고정금액 비율 계산
             var directConstPrice = Data.Investigation["직공비"];
-            var fixCostSum = Data.FixedPriceDirectMaterial + Data.FixedPriceDirectLabor + Data.FixedPriceOutputExpense;
-            //var fixCostSum = Data.InvestigateFixedPriceDirectMaterial + Data.InvestigateFixedPriceDirectLabor + Data.InvestigateFixedPriceOutputExpense;
+            //var fixCostSum = Data.FixedPriceDirectMaterial + Data.FixedPriceDirectLabor + Data.FixedPriceOutputExpense;
+            var fixCostSum = Data.InvestigateFixedPriceDirectMaterial + Data.InvestigateFixedPriceDirectLabor + Data.InvestigateFixedPriceOutputExpense;
 
             Data.FixedPricePercent = (fixCostSum / directConstPrice) * 100; // 고정금액 비중 계산
         }

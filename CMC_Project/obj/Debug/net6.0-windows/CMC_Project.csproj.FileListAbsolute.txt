@@ -98,3 +98,75 @@ D:\work\CMC_Project2\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC
 D:\work\CMC_Project2\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\ref\CMC_Project.dll
 D:\work\CMC_Project2\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.pdb
 D:\work\CMC_Project2\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.genruntimeconfig.cache
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.exe
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.deps.json
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.runtimeconfig.json
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\ref\CMC_Project.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.pdb
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\NPOI.OOXML.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\NPOI.OpenXml4Net.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\NPOI.OpenXmlFormats.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\NPOI.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\bin\Debug\net6.0-windows\ICSharpCode.SharpZipLib.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.csproj.AssemblyReference.cache
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\Views\AdjustmentPage.g.cs
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\Views\ConvertionPage.g.cs
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\Views\ResultPage.g.cs
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project_MarkupCompile.cache
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project_MarkupCompile.lref
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\Views\AdjustmentPage.baml
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\Views\ConvertionPage.baml
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\Views\ResultPage.baml
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.g.resources
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.AssemblyInfoInputs.cache
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.AssemblyInfo.cs
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.csproj.CoreCompileInputs.cache
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.csproj.CopyComplete
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\ref\CMC_Project.dll
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.pdb
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.genruntimeconfig.cache
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\Views\VerificationPage.g.cs
+C:\Users\ykoou\source\repoFinalFinalFinalFinal\CMC_Project-master (2)\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\Views\VerificationPage.baml
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.exe
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.deps.json
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.runtimeconfig.json
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\ref\CMC_Project.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\CMC_Project.pdb
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\NPOI.OOXML.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\NPOI.OpenXml4Net.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\NPOI.OpenXmlFormats.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\NPOI.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\bin\Debug\net6.0-windows\ICSharpCode.SharpZipLib.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.csproj.AssemblyReference.cache
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\Views\AdjustmentPage.g.cs
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\Views\ConvertionPage.g.cs
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\Views\ResultPage.g.cs
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\Views\VerificationPage.g.cs
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\App.g.cs
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project_MarkupCompile.cache
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project_MarkupCompile.lref
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\MainWindow.baml
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\Views\AdjustmentPage.baml
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\Views\ConvertionPage.baml
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\Views\ResultPage.baml
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\Views\VerificationPage.baml
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.g.resources
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.AssemblyInfoInputs.cache
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.AssemblyInfo.cs
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.csproj.CoreCompileInputs.cache
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.csproj.CopyComplete
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\ref\CMC_Project.dll
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.pdb
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\CMC_Project.genruntimeconfig.cache

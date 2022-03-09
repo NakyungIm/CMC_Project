@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
 using SetUnitPriceByExcel;
-using System.Diagnostics;
 
 namespace CMC_Project.Views
 {
@@ -75,7 +74,6 @@ namespace CMC_Project.Views
             }
             averageRating.Text = result;
             averageRating.SelectionStart = selectionStart <= averageRating.Text.Length ? selectionStart : averageRating.Text.Length;
-            //Debug.Print(result);
         }
 
         //sender: 이벤트 발생자, args: 이벤트 인자
@@ -204,30 +202,13 @@ namespace CMC_Project.Views
                 //입찰금액 심사 점수 계산 및 단가 조정
                 CalculatePrice.Calculation();
 
-                /*
-                 *             //고정금액 비율 계산
-            var directConstPrice = Data.Investigation["직공비"]; 8355359914
-            var fixCostSum = Data.InvestigateFixedPriceDirectMaterial + Data.InvestigateFixedPriceDirectLabor + Data.InvestigateFixedPriceOutputExpense;  0 + 0 + 0
-            Data.FixedPricePercent = (fixCostSum / directConstPrice) * 100; // 고정금액 비중 계산
-
-                                        //직공비, 고정금액, 표준시장단가 금액 재계산
-                        Data.RealDirectMaterial -= Convert.ToDecimal(string.Concat(bid.Element("C19").Value));
-                        Data.RealDirectLabor -= Convert.ToDecimal(string.Concat(bid.Element("C20").Value));
-                        Data.RealOutputExpense -= Convert.ToDecimal(string.Concat(bid.Element("C21").Value));
-                        Data.FixedPriceDirectMaterial -= Convert.ToDecimal(string.Concat(bid.Element("C19").Value));
-                        Data.FixedPriceDirectLabor -= Convert.ToDecimal(string.Concat(bid.Element("C20").Value));
-                        Data.FixedPriceOutputExpense -= Convert.ToDecimal(string.Concat(bid.Element("C21").Value));
-
-
-                 */
-
                 FixedPercentPrice.Text = Data.FixedPricePercent + " %";
                 MyPercent.Text = "(+/-) " + CalculatePrice.myPercent * 100.0m + " %";
                 TargetRate.Text = Data.Bidding["도급비계"] + " 원 " + "(" + FillCostAccount.GetRate("도급비계") + " %)"; // 도급비계
                 isCalculate = true;
 
                 //OutputTextBlock.Text = "사정율 적용 완료!";
-                DisplayDialog("사정율 적용을 완료하였습니다", Data.FixedPriceDirectMaterial.ToString());
+                DisplayDialog("사정율 적용을 완료하였습니다", "Success");
             }
 
             // 단가를 불러오지 않은 경우
@@ -243,7 +224,7 @@ namespace CMC_Project.Views
         {
             if (isCalculate)
             {
-                CMC_Project.Views.ResultPage rw = new CMC_Project.Views.ResultPage();
+                CMC_Project.Views.ResultPage rw = new();
 
                 rw.Show();
             }

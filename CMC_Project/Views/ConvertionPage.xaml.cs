@@ -237,34 +237,26 @@ namespace CMC_Project.Views
                     //원가계산서 항목별 조사금액 계산(보정 전)
                     FillCostAccount.CalculateInvestigationCosts(Data.Correction);
 
-                    //ViewCostAccount();
+                    ViewCostAccount();
 
                     Data.CanCovertFile = false;
                     Data.IsConvert = true;
                     AdjustmentPage.isConfirm = true;
                     DisplayDialog("단가 세팅 완료", "Complete");
                     //isConfirm = true;
-
                 }
             }
         }
 
-        /*
-        private async void ViewCostAccount()
+        
+        private static void ViewCostAccount()
         {
-            CoreApplicationView newCoreView = CoreApplication.CreateNewView();
-            ApplicationView newAppView = null;
-            int mainViewId = ApplicationView.GetApplicationViewIdForWindow(
-                CoreApplication.MainView.CoreWindow);
-            await newCoreView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-                newAppView = ApplicationView.GetForCurrentView();
-                Window.Current.Content = new Frame();
-                (Window.Current.Content as Frame).Navigate(typeof(VerificationPage));
-                Window.Current.Activate();
-            });
-            await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newAppView.Id, ViewSizePreference.UseHalf, mainViewId, ViewSizePreference.UseHalf);
+
+                CMC_Project.Views.VerificationPage vf = new();
+                vf.Show();
+
         }
-        */
+        
 
         private async void InitButtonClick(object sender, RoutedEventArgs e)
         {

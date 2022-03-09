@@ -108,8 +108,8 @@ namespace SetUnitPriceByExcel
             //조사금액을 채운 원가계산서_세부결과.xlsx의 경로
             string costStatementPath = Path.Combine(Data.work_path, "원가계산서.xlsx");
             //원가계산서_세부결과 파일 불러오기
-            //var workbook = ExcelHandling.GetWorkbook(costStatementPath, ".xlsx");
-            var workbook = ExcelHandling.GetWorkbook("원가계산서.xlsx", ".xlsx");
+            var workbook = ExcelHandling.GetWorkbook(costStatementPath, ".xlsx");
+            //var workbook = ExcelHandling.GetWorkbook("원가계산서.xlsx", ".xlsx");
 
             var sheet = workbook.GetSheetAt(0);
 
@@ -371,7 +371,8 @@ namespace SetUnitPriceByExcel
             Data.Bidding["순공사원가"] =  Data.Bidding["직접재료비"] + Data.Bidding["노무비"] + Data.Bidding["경비"];
             //2. 일반관리비
             Data.Bidding["일반관리비"] = ToLong(Data.Bidding["순공사원가"] * (Data.Rate1["일반관리비"] * 0.01m));
-            if(Data.CostAccountDeduction.Equals("1"))
+            Data.Bidding["일반관리비before"] = ToLong(Data.Bidding["순공사원가"] * (Data.Rate1["일반관리비"] * 0.01m));
+            if (Data.CostAccountDeduction.Equals("1"))
             {
                 Data.Bidding["일반관리비before"] = ToLong(Data.Bidding["순공사원가"] * (Data.Rate1["일반관리비"] * 0.01m));
                 Data.Bidding["일반관리비"] = ToLong(Math.Ceiling(Data.Bidding["순공사원가"] * (Data.Rate1["일반관리비"] * 0.01m) * 0.997m));

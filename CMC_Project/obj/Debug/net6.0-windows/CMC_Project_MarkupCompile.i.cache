@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\work\CMC_Project2\CMC_Project-master\CMC_Project\obj\Debug\net6.0-windows\
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\obj\Debug\net6.0-windows\
 CMC_Project
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\work\CMC_Project2\CMC_Project-master\CMC_Project\App.xaml
-4-285268313
+D:\work\CMC_Project-master\CMC_Project\CMC_Project\App.xaml
+5414578333
 
-15-2108830172
+1677771136
 201-1366455371
-MainWindow.xaml;Views\AdjustmentPage.xaml;Views\ConvertionPage.xaml;Views\ResultPage.xaml;
+MainWindow.xaml;Views\AdjustmentPage.xaml;Views\ConvertionPage.xaml;Views\ResultPage.xaml;Views\VerificationPage.xaml;
 
 True
 

@@ -43,20 +43,18 @@ namespace SetUnitPriceByExcel
         // Workbook 읽어드리기
         static public IWorkbook GetWorkbook(string filename, string version)
         {
-            using (var stream = new FileStream(filename, FileMode.Open, FileAccess.ReadWrite))
+            using FileStream? stream = new(filename, FileMode.Open, FileAccess.ReadWrite);
+            //표준 xls 버전
+            if (".xls".Equals(version))
             {
-                //표준 xls 버전
-                if (".xls".Equals(version))
-                {
-                    return new HSSFWorkbook(stream);
-                }
-                //확장 xlsx 버전
-                else if (".xlsx".Equals(version))
-                {
-                    return new XSSFWorkbook(stream);
-                }
-                throw new NotSupportedException();
+                return new HSSFWorkbook(stream);
             }
+            //확장 xlsx 버전
+            else if (".xlsx".Equals(version))
+            {
+                return new XSSFWorkbook(stream);
+            }
+            throw new NotSupportedException();
         }
 
         //작업 후, workbook 저장
