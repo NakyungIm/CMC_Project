@@ -6,9 +6,7 @@ namespace SetUnitPriceByExcel
 {
     class Data
     {
-        //public static String folder = System.AppDomain.CurrentDomain.BaseDirectory; // 액세스 허용 구역 (User\AppData\Local\Packages\~~\LocalState) : 앱 임시 데이터
         public static String folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        // public static String folder = Windows.Storage.ApplicationData.Current.LocalFolder;
         // WPF 앱 파일 관리 변수
         public static string XlsText;
         public static IReadOnlyList<FileStream> XlsFiles;
@@ -23,7 +21,6 @@ namespace SetUnitPriceByExcel
 
 
         public static string desktop_path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);  //바탕화면 경로
-        //public static string desktop_path = "/Users/limsungmin/Downloads/solution";  //바탕화면 경로
         public static string work_path = Path.Combine(desktop_path,"WORK DIRECTORY");   //작업폴더(WORK DIRECTORY) 경로
 
         private decimal materialUnit;   //재료비 단가

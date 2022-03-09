@@ -78,7 +78,6 @@ namespace SetUnitPriceByExcel
         {
             //고정금액 비율 계산
             var directConstPrice = Data.Investigation["직공비"];
-            //var fixCostSum = Data.FixedPriceDirectMaterial + Data.FixedPriceDirectLabor + Data.FixedPriceOutputExpense;
             var fixCostSum = Data.InvestigateFixedPriceDirectMaterial + Data.InvestigateFixedPriceDirectLabor + Data.InvestigateFixedPriceOutputExpense;
 
             Data.FixedPricePercent = (fixCostSum / directConstPrice) * 100; // 고정금액 비중 계산
@@ -178,7 +177,6 @@ namespace SetUnitPriceByExcel
 
                         if(Data.ZeroWeightDeduction.Equals("1")){   //최소단가율 50% 적용 O
                             if(curObject.Weight == 0){
-                                //RoundOrTruncate(0.5m, curObject, ref myMaterialUnit, ref myLaborUnit, ref myExpenseUnit);
                                 //공종 가중치 0%인 경우 사용자의 소수처리 옵션과 상관없이 50% 적용후 소수첫째자리에서 올림
                                 curObject.MaterialUnit = Math.Ceiling(curObject.MaterialUnit * 0.5m);
                                 curObject.LaborUnit = Math.Ceiling(curObject.LaborUnit * 0.5m);
@@ -428,7 +426,6 @@ namespace SetUnitPriceByExcel
                         bid.Element("C22").Value = Data.Bidding[string.Concat(bid.Element("C9").Value)].ToString();
                     }
                     else if(Data.Rate1.ContainsKey(string.Concat(bid.Element("C9").Value))){
-                        //bid.Element("C22").Value = Convert.ToInt64(Math.Truncate(Data.RealPrices["직공비"] * Data.Rate1[string.Concat(bid.Element("C9").Value)] * 0.01m)).ToString();
                         bid.Element("C22").Value = Data.Bidding[string.Concat(bid.Element("C9").Value)].ToString();
                     }
                 }           

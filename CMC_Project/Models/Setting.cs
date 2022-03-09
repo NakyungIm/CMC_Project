@@ -6,9 +6,6 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Text;
-//using Windows.Storage;
-//using CMC_Progrm.Views;
-//using Windows.UI.Text.Core;
 
 namespace SetUnitPriceByExcel
 {
@@ -144,7 +141,6 @@ namespace SetUnitPriceByExcel
                 }
             }
             //매칭이 되지 않은 경우, 실내역파일과 공내역의 공사가 동일한지 확인해야함.
-            //Console.WriteLine("공내역 파일과 실내역 파일의 공사가 일치하는지 확인해주세요");
             Data.IsFileMatch = false;
         }
 
@@ -200,7 +196,6 @@ namespace SetUnitPriceByExcel
                         curObj.MaterialUnit = Convert.ToDecimal(row.GetCell(8).NumericCellValue); //재료비 단가
                         curObj.LaborUnit = Convert.ToDecimal(row.GetCell(10).NumericCellValue);   //노무비 단가
                         curObj.ExpenseUnit = Convert.ToDecimal(row.GetCell(12).NumericCellValue); //경비 단가
-                        //Console.WriteLine(curObj.Name + "   " + name);
                         rowIndex++;
                         break;
                     }
@@ -215,9 +210,8 @@ namespace SetUnitPriceByExcel
             }
         }
 
-        static async void SetUnitPrice()
+        static void SetUnitPrice()
         {
-            //StorageFolder copiedFolder = await Data.folder.GetFolderAsync("Actual Xlsx"); // Actual Xlsx 폴더
             String copiedFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Actual Xlsx";
             DirectoryInfo dir = new DirectoryInfo(copiedFolder);
             FileInfo[] files = dir.GetFiles();
@@ -279,7 +273,6 @@ namespace SetUnitPriceByExcel
                 if (bid.Name == "T4")
                 {
                     Data.ConstructionTerm = Convert.ToInt64(bid.Element("C28").Value);
-                    //Console.WriteLine("공사기간 : " + Data.ConstructionTerm);
                 }
                 //고정금액 및 적용비율 1, 2 저장
                 if (bid.Element("C6") != null)
@@ -294,7 +287,6 @@ namespace SetUnitPriceByExcel
                         {
                             long fixedPrice = Convert.ToInt64(bid.Element("C22").Value);    //고정금액
                             Data.Fixed.Add(name, fixedPrice);    //고정금액 딕셔너리에 추가
-                            //Console.WriteLine(name + " (고정금액) : " + fixedPrice);
                         }
                         else
                         {
@@ -302,7 +294,6 @@ namespace SetUnitPriceByExcel
                             decimal applicationRate2 = Convert.ToDecimal(val2);   //적용비율 2
                             Data.Rate1.Add(name, applicationRate1);  //적용비율1 딕셔너리에 추가
                             Data.Rate2.Add(name, applicationRate2);  //적용비율2 딕셔너리에 추가
-                            //Console.WriteLine(name + "적용비율1 : " + applicationRate1 + "적용비율2 : " + applicationRate2);
                         }
                     }
                 }

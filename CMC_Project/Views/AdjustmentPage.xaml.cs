@@ -185,9 +185,6 @@ namespace CMC_Project.Views
         }
 
 
-
-
-
         private void CalBtnClick(object sender, RoutedEventArgs e)
         {
             if (averageRating.Text == string.Empty || estimateRating.Text == string.Empty)
@@ -233,7 +230,6 @@ namespace CMC_Project.Views
                 DisplayDialog("계산 후 확인해주세요", "Fail");
             }
         }
-
 
 
 

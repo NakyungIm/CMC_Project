@@ -1,16 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using SetUnitPriceByExcel;
 
 namespace CMC_Project.Views
@@ -20,16 +10,9 @@ namespace CMC_Project.Views
     /// </summary>
     public partial class VerificationPage : Window
     {
-
         public VerificationPage()
         {
             this.InitializeComponent();
-            //this.CostAccount_19.TextChanged += CostAccount_19_ValueChanged;
-            //this.CostAccount_24.TextChanged += CostAccount_24_ValueChanged;
-            //this.CostAccount_28.TextChanged += CostAccount_28_ValueChanged;
-
-
-
             CostAccount_1.Text = Data.Investigation["순공사원가"].ToString("#,##0");
             CostAccount_2.Text = Data.Investigation["직접재료비"].ToString("#,##0");
             CostAccount_3.Text = Data.Investigation["직접재료비"].ToString("#,##0");
@@ -69,25 +52,7 @@ namespace CMC_Project.Views
         {
             MessageBox.Show(dialog, title, MessageBoxButton.OK, MessageBoxImage.Information);
         }
-        /*
-        private void CostAccount_19_ValueChanged(object sender, TextChangedEventArgs args)
-        {
-            TextBox CostAccount_19 = sender as TextBox;
-            Data.Correction["공사이행보증서발급수수료"] = (long.Parse(CostAccount_19.GetLineText(0)));
-        }
 
-        private void CostAccount_24_ValueChanged(object sender, TextChangedEventArgs args)
-        {
-            TextBox CostAccount_24 = sender as TextBox;
-            Data.Correction["이윤"] = (long.Parse(CostAccount_24.GetLineText(0)));
-        }
-
-        private void CostAccount_28_ValueChanged(object sender, TextChangedEventArgs args)
-        {
-            TextBox CostAccount_28 = sender as TextBox;
-            Data.Correction["공사손해보험료"] = (long.Parse(CostAccount_28.GetLineText(0)));
-        }
-        */
         private void CorrectionButton_Click(object sender, RoutedEventArgs e)
         {
             FillCostAccount.CalculateInvestigationCosts(Data.Correction);

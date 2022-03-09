@@ -205,7 +205,7 @@ namespace CMC_Project.Views
                 try
                 {
                     //공내역 bid 파일 -> 공내역 xml 파일
-                    await BidHandling.BidToXml();
+                    BidHandling.BidToXml();
                     //실내역 데이터 복사 및 단가 세팅 & 직공비 고정금액 비중 계산
                     //Setting.GetData(); -> 비동기 문제로 BidHandling.BidToXml()로 이동
                 }
@@ -239,11 +239,14 @@ namespace CMC_Project.Views
 
                     ViewCostAccount();
 
+                    FillCostAccount.CalculateInvestigationCosts(Data.Correction);
+                    //원가계산서_세부결과 조사금액 세팅
+                    FillCostAccount.FillInvestigationCosts();
+
                     Data.CanCovertFile = false;
                     Data.IsConvert = true;
                     AdjustmentPage.isConfirm = true;
                     DisplayDialog("단가 세팅 완료", "Complete");
-                    //isConfirm = true;
                 }
             }
         }
@@ -251,18 +254,13 @@ namespace CMC_Project.Views
         
         private static void ViewCostAccount()
         {
-
                 CMC_Project.Views.VerificationPage vf = new();
                 vf.Show();
-
         }
         
 
-        private async void InitButtonClick(object sender, RoutedEventArgs e)
+        private void InitButtonClick(object sender, RoutedEventArgs e)
         {
-            //앱 데이터 초기화
-            //await ApplicationData.Current.ClearAsync();
-
             // Data 초기화
             Data.ConstructionTerm = 0;
             Data.RealDirectMaterial = 0;
@@ -322,7 +320,6 @@ namespace CMC_Project.Views
             //업로드 버튼 활성화
             BidOpenFile.IsEnabled = true;
             XlsOpenFile.IsEnabled = true;
-            //isConfirm = false;
 
             //텍스트 초기화
             XlsList.Text = "파일을 업로드 해주세요.";
@@ -343,12 +340,11 @@ namespace CMC_Project.Views
             CalculatePrice.myPercent = 0;
         }
 
-        private async void AdjustBtnClick(object sender, RoutedEventArgs e)
+        private void AdjustBtnClick(object sender, RoutedEventArgs e)
         {
             AdjustmentPage adjustmentPage = new AdjustmentPage();
             NavigationService.Navigate(adjustmentPage);
         }
 
-        
     }
 }

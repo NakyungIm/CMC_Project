@@ -1,33 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.IO.Compression;
-using System.Xml;
-using System.Xml.Linq;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SetUnitPriceByExcel
 {
     class BidHandling
     {
-        //public static StorageFolder folder = ApplicationData.Current.LocalFolder; // 액세스 허용 구역 (User\AppData\Local\Packages\~~\LocalState) : 앱 임시 데이터
-        //String folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         String folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public static string filename;
 
-        public static async Task BidToXml()
+        public static void BidToXml()
         {
-            //string nextName = file.DisplayName + ".zip";
-            //await file.RenameAsync(nextName, NameCollisionOption.GenerateUniqueName);
-
-            //StorageFolder copiedFolder = await Data.folder.GetFolderAsync("Empty Bid"); // Empty Bid 폴더
-            //IReadOnlyList<StorageFile> bidFile = await copiedFolder.GetFilesAsync();
             String copiedFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\EmptyBid";
             string[] bidFile = Directory.GetFiles(copiedFolder, "*.BID");
             string myfile = bidFile[0];
-            //filename = bidFile[0].DisplayName;
             filename = Path.GetFileNameWithoutExtension(bidFile[0]);
             File.Move(myfile, Path.ChangeExtension(myfile, ".zip"));
             ZipFile.ExtractToDirectory(Path.Combine(copiedFolder, filename + ".zip"), copiedFolder);
@@ -41,7 +29,7 @@ namespace SetUnitPriceByExcel
             Setting.GetData();
         }
 
-        public static async void XmlToBid()
+        public static void XmlToBid()
         {
             string myfile = Path.Combine(Data.work_path, "Result_Xml.xml");
             byte[] bytes = File.ReadAllBytes(myfile);

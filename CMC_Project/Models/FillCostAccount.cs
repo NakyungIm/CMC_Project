@@ -1,16 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-//공통 NPOI
-using NPOI;
-using NPOI.SS.UserModel;
-using NPOI.SS.Util;
-//표준 xls 버전 excel 시트
-using NPOI.HSSF;
-using NPOI.HSSF.UserModel;
-//확장 xlsx 버전 excel 시트
-using NPOI.XSSF;
-using NPOI.XSSF.UserModel;
 
 namespace SetUnitPriceByExcel
 {
@@ -78,9 +68,6 @@ namespace SetUnitPriceByExcel
             ExcelHandling.GetCell(sheet, 33, 8).SetCellValue(Data.Investigation["도급비계"]);  //9. 도급비계
 
             //원가계산서 조사금액 세팅 시점에 CalculatePrice.cs에서 재계산 시, 초기화를 위한 조사금액 저장
-            // var DM = Data.RealDirectMaterial;
-            // var DL = Data.RealDirectLabor;
-            // var OE = Data.RealOutputExpense;
             var FM = Data.FixedPriceDirectMaterial;
             var FL = Data.FixedPriceDirectLabor;
             var FOE = Data.FixedPriceOutputExpense;
@@ -88,9 +75,6 @@ namespace SetUnitPriceByExcel
             var SL = Data.StandardLabor;
             var SOE = Data.StandardExpense;
 
-            // Data.InvestigateDirectMaterial = DM;
-            // Data.InvestigateDirectLabor = DL;
-            // Data.InvestigateOutputExpense = OE;
             Data.InvestigateFixedPriceDirectMaterial = FM;
             Data.InvestigateFixedPriceDirectLabor = FL;
             Data.InvestigateFixedPriceOutputExpense = FOE;
@@ -109,7 +93,6 @@ namespace SetUnitPriceByExcel
             string costStatementPath = Path.Combine(Data.work_path, "원가계산서.xlsx");
             //원가계산서_세부결과 파일 불러오기
             var workbook = ExcelHandling.GetWorkbook(costStatementPath, ".xlsx");
-            //var workbook = ExcelHandling.GetWorkbook("원가계산서.xlsx", ".xlsx");
 
             var sheet = workbook.GetSheetAt(0);
 
